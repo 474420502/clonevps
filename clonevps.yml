@@ -1,0 +1,73 @@
+- hosts: localhost
+  tasks:
+    - name: create user eson
+      user: 
+        name: eson
+        create_home: yes
+        shell: "/bin/bash"
+
+    - name: create user gitea
+      user: 
+        name: gitea
+        create_home: yes
+        shell: "/bin/bash"
+
+    - name: apt install
+      apt:
+        pkg:
+          - sshpass
+          - screen 
+          - shadowsocks-libev
+          - docker.io
+          
+
+- hosts: 474420502.top
+  tasks:
+    - name: synchronize pull go
+      synchronize:
+        src: /usr/local/share/go/
+        dest: /usr/local/share/go/
+        mode: pull
+
+    - name: synchronize pull gopath
+      synchronize:
+        src: /usr/local/share/gopath/
+        dest: /usr/local/share/gopath/
+        mode: pull
+
+    - name: synchronize pull ss
+      synchronize:
+        src: /root/ss/
+        dest: /root/ss/
+        mode: pull
+
+    - name: synchronize pull etc
+      synchronize:
+        src: /etc/
+        dest: /etc/
+        mode: pull
+
+    - name: synchronize pull eson home
+      synchronize:
+        src: /home/eson/
+        dest: /home/eson/
+        mode: pull
+
+    - name: synchronize pull gitea home
+      synchronize:
+        src: /home/gitea/
+        dest: /home/gitea/
+        mode: pull
+
+    - name: synchronize pull .ssh 
+      synchronize:
+        src: /root/.ssh/
+        dest: /root/.ssh/
+        mode: pull
+
+    - name: 提示
+      debug: 
+        msg: "初始化/home/gitea/"
+
+
+    
