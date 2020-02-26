@@ -69,7 +69,7 @@
         dest: /root/.ssh/
         mode: pull
 
-    - name: synchronize pull gopath
+    - name: synchronize pull locale-check
       synchronize:
         src: /usr/bin/locale-check
         dest: /usr/bin/locale-check
