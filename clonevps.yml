@@ -69,9 +69,12 @@
         dest: /root/.ssh/
         mode: pull
 
-    - name: 提示
-      debug: 
-        msg: "初始化/home/gitea/"
+    - name: synchronize pull gopath
+      synchronize:
+        src: /usr/bin/locale-check
+        dest: /usr/bin/locale-check
+        mode: pull
+
 
 
     
